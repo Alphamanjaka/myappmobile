@@ -16,11 +16,6 @@ export class CartService {
     this.cartItems.next([...currentItems, item]);
   }
 
-  removeItem(itemId: number) {
-    const currentItems = this.cartItems.getValue();
-    this.cartItems.next(currentItems.filter(item => item.package.id !== itemId));
-  }
-
   getCartItems() {
     return this.cartItems.getValue();
   }

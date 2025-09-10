@@ -16,13 +16,13 @@ import { homeOutline, homeSharp, searchOutline, searchSharp, cartOutline, cartSh
 export class AppComponent {
   public appPages = [
     { title: 'Accueil', url: '/home', icon: 'home' },
-    { title: 'Rechercher', url: '/search', icon: 'search' },
+    { title: 'Offres', url: '/offer', icon: 'trip' },
     { title: 'Panier', url: '/cart', icon: 'cart' },
     { title: 'Mes réservations', url: '/booking-history', icon: 'briefcase' },
     { title: 'Profil', url: '/profile', icon: 'person' },
   ];
 
   constructor() {
-    addIcons({ homeOutline, homeSharp, searchOutline, searchSharp, cartOutline, cartSharp, personOutline, personSharp, briefcaseOutline, briefcaseSharp, exitOutline, exitSharp });
+    addIcons({ homeOutline, homeSharp, searchOutline, cartOutline, cartSharp, personOutline, personSharp, briefcaseOutline, briefcaseSharp, exitOutline, exitSharp });
   }
 }

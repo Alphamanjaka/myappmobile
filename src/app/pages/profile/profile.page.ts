@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { UserService } from '../../services/user.service';
-import { UserProfile } from '../../interfaces/travel.models';
+import { User } from '../../interfaces/travel.models';
 
 @Component({
   selector: 'app-profile',
@@ -23,10 +23,8 @@ export class ProfilePage implements OnInit {
 
   ngOnInit() {
     this.profileForm = this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
+      username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      phone: ['', Validators.required]
     });
 
     this.userService.getUserProfile().subscribe(user => {
@@ -36,7 +34,7 @@ export class ProfilePage implements OnInit {
 
   saveProfile() {
     if (this.profileForm.valid) {
-      this.userService.updateUserProfile(this.profileForm.value as UserProfile).subscribe(updatedUser => {
+      this.userService.updateUserProfile(this.profileForm.value as User).subscribe(updatedUser => {
         console.log('Profile updated:', updatedUser);
         // Add toast notification here later
       });

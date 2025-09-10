@@ -1,51 +1,66 @@
+export interface City {
+  id: number;
+  name: string;
+  country: string;
+  latitude: number;
+  longitude: number;
+}
+
 export interface Destination {
   id: number;
   name: string;
+  city: City | null;
   description: string;
-  imageUrl: string;
-  averagePrice: number;
-  popularity: number; // from 1 to 5
+  image: string | null;
+  latitude: number;
+  longitude: number;
 }
 
-export interface TravelPackage {
+export interface Offer {
   id: number;
-  destinationId: number;
-  name: string;
+  destination: Destination;
+  title: string;
   description: string;
-  photos: string[];
   price: number;
-  duration: number; // in days
-  included: string[];
-  reviews: ClientReview[];
-  availability: Date[];
-  cancellationPolicy: string;
+  start_date: string; // ISO format
+  end_date: string;
+  available_slots: number;
+  created_by: User | null;
+  cancellation_policy: string;
 }
 
-export interface ClientReview {
-  author: string;
-  rating: number; // from 1 to 5
+export interface Review {
+  id: number;
+  offer: Offer;
+  user: User;
+  rating: number;
   comment: string;
+  created_at: string;
+}
+export interface Reservation {
+  id: number;
+  user: User;
+  offer: Offer;
+  reserved_on: string;
+  number_of_people: number;
+  status: 'pending' | 'confirmed' | 'cancelled';
+}export interface Cart {
+  id: number;
+  user: User;
+  created_at: string;
+  items: CartItem[];
 }
 
 export interface CartItem {
-  package: TravelPackage;
-  travelers: number;
-  date: Date;
-}
-
-export interface Booking {
-  id: string;
-  userId: number;
-  items: CartItem[];
-  totalPrice: number;
-  bookingDate: Date;
-  status: 'confirmed' | 'pending' | 'cancelled';
-}
-
-export interface UserProfile {
   id: number;
-  firstName: string;
-  lastName: string;
+  cart: number; // ou Cart si tu veux l'objet complet
+  offer: Offer;
+  quantity: number;
+}
+
+export interface User {
+  id: number;
+  username: string;
   email: string;
-  phone: string;
+  // Ajoute d'autres champs si ton API les expose
 }

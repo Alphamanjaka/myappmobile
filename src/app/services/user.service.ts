@@ -1,18 +1,16 @@
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
-import { UserProfile } from '../interfaces/travel.models';
+import { User } from '../interfaces/travel.models';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  private user: UserProfile = {
+  private user: User = {
     id: 1,
-    firstName: 'John',
-    lastName: 'Doe',
+    username: 'johndoe',
     email: 'john.doe@example.com',
-    phone: '123-456-7890'
   };
 
   constructor() { }
@@ -21,7 +19,7 @@ export class UserService {
     return of(this.user);
   }
 
-  updateUserProfile(profile: UserProfile) {
+  updateUserProfile(profile: User) {
     this.user = profile;
     return of(this.user);
   }

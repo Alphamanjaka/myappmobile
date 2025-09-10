@@ -14,17 +14,12 @@
     </ion-list-header>
 
     <ion-item>
-      <ion-input label="Prénom" formControlName="firstName"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input label="Nom" formControlName="lastName"></ion-input>
+      <ion-input label="Nom d'utilisateur" formControlName="username" type="text"></ion-input>
     </ion-item>
     <ion-item>
       <ion-input label="Email" formControlName="email" type="email"></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-input label="Téléphone" formControlName="phone" type="tel"></ion-input>
-    </ion-item>
+
 
     <ion-button expand="block" type="submit" [disabled]="profileForm.invalid">Enregistrer</ion-button>
   </form>

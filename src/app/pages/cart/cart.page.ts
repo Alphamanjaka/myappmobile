@@ -22,13 +22,6 @@ export class CartPage implements OnInit {
   constructor(private cartService: CartService) { }
 
   ngOnInit() {
-    this.cartItems$ = this.cartService.cartItems$;
-    this.cartItems$.subscribe(items => {
-      this.total = items.reduce((acc, item) => acc + item.package.price * item.travelers, 0);
-    });
-  }
 
-  removeItem(itemId: number) {
-    this.cartService.removeItem(itemId);
   }
 }

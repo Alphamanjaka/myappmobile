@@ -21,8 +21,7 @@ export class HomePage implements OnInit {
   constructor(private destinationService: DestinationService, private router: Router) { }
 
   ngOnInit() {
-    this.featuredDestinations$ = this.destinationService.getFeaturedDestinations();
-    console.log(this.featuredDestinations$);
+    this.featuredDestinations$ = this.destinationService.getAllDestinations();
   }
 
   onSearchChange(event: any) {

@@ -23,20 +23,31 @@
         <h2>Destinations Phares</h2>
       </ion-list-header>
       @if (featuredDestinations$ | async; as destinations) {
-        @for (dest of destinations; track dest.id) {
-          <ion-card [routerLink]="['/search', { query: dest.name }]">
-            <img [src]="dest.imageUrl" [alt]="dest.name" />
-            <ion-card-header>
-              <ion-card-title>{{ dest.name }}</ion-card-title>
-              <ion-card-subtitle>
-                {{ dest.averagePrice | currency:'EUR' }} en moyenne
-              </ion-card-subtitle>
-            </ion-card-header>
-            <ion-card-content>
-              {{ dest.description }}
-            </ion-card-content>
-          </ion-card>
-        }
+      @for (dest of destinations; track dest.id) {
+      <ion-card [routerLink]="['/search', { query: dest.name }]">
+        <img [src]="dest.image" [alt]="dest.name" />
+        <ion-card-header>
+          <ion-card-title>{{ dest.name }}</ion-card-title>
+          <ion-card-subtitle>
+            {{ dest.description| currency:'EUR' }} en moyenne
+          </ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          {{ dest.description }}
+        </ion-card-content>
+      </ion-card>
+      }
+      @empty {
+      <ion-card color="light">
+        <ion-card-header>
+          <ion-card-title>Aucune destination trouvée</ion-card-title>
+          <ion-card-subtitle>Essayez une autre recherche ou revenez plus tard</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          Nous n’avons pas encore d’offres disponibles pour cette sélection.
+        </ion-card-content>
+      </ion-card>
+      }
       }
     </ion-list>
   </div>
