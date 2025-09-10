@@ -16,7 +16,7 @@ import { homeOutline, homeSharp, searchOutline, searchSharp, cartOutline, cartSh
 export class AppComponent {
   public appPages = [
     { title: 'Accueil', url: '/home', icon: 'home' },
-    { title: 'Offres', url: '/offer', icon: 'trip' },
+    { title: 'Offres', url: '/offer', icon: 'briefcase' },
     { title: 'Panier', url: '/cart', icon: 'cart' },
     { title: 'Mes réservations', url: '/booking-history', icon: 'briefcase' },
     { title: 'Profil', url: '/profile', icon: 'person' },

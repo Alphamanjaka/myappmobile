@@ -1,0 +1,16 @@
+<ion-searchbar [(ngModel)]="searchTerm" (ionInput)="filterOffers()" placeholder="Rechercher une offre"></ion-searchbar>
+
+<ion-select [(ngModel)]="selectedCategory" (ionChange)="filterOffers()" placeholder="Catégorie">
+  <ion-select-option value="">Toutes</ion-select-option>
+  <ion-select-option value="plage">Plage</ion-select-option>
+  <ion-select-option value="montagne">Montagne</ion-select-option>
+</ion-select>
+
+<ion-list>
+  <ion-item *ngFor="let offer of filteredOffers">
+    <ion-label>
+      <h2>{{ offer.name }}</h2>
+      <p>{{ offer.description }}</p>
+    </ion-label>
+  </ion-item>
+</ion-list>

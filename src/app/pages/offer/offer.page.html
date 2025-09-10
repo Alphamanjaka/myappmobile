@@ -1,5 +1,8 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
     <ion-title>offer</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -10,4 +13,32 @@
       <ion-title size="large">offer</ion-title>
     </ion-toolbar>
   </ion-header>
+  @if( offers$ | async; as offers) {
+  @for(offer of offers; track offer.id) {
+  <ion-card [routerLink]="['/offer-detail', { id: offer.id }]">
+    <img src="https://ionicframework.com/docs/img/demos/card-media.png" alt="Silhouette of mountains">
+    <ion-card-header>
+      <ion-card-title>{{ offer.title }}</ion-card-title>
+      <ion-card-subtitle>
+        {{ offer.price | currency:'EUR' }} - {{ offer.start_date }} jours
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      {{ offer.description }}
+    </ion-card-content>
+  </ion-card>
+  }
+  }
+  @else {
+  <ion-card color="light">
+    <ion-card-header>
+      <ion-card-title>Aucune offre trouvée</ion-card-title>
+      <ion-card-subtitle>Essayez une autre recherche ou revenez plus tard</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      Nous n’avons pas encore d’offres disponibles pour cette sélection.
+    </ion-card-content>
+  </ion-card>
+  }
+  
 </ion-content>

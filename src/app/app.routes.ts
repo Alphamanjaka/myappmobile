@@ -33,7 +33,7 @@ export const routes: Routes = [
   },
 
   {
-    path: 'offer-detail',
+    path: 'offer-detail/:id',
     loadComponent: () => import('./pages/offer-detail/offer-detail.page').then(m => m.OfferDetailPage)
   },
 ];
