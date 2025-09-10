@@ -1,43 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+// src/app/profile/profile.page.ts
+import { Component } from '@angular/core';
+import { User, Reservation } from 'src/app/interfaces/travel.models';
 import { IonicModule } from '@ionic/angular';
-import { UserService } from '../../services/user.service';
-import { User } from '../../interfaces/travel.models';
+import { VoucherItemComponent } from "src/app/components/voucher-item/voucher-item.component";
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
   styleUrls: ['./profile.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule, ReactiveFormsModule]
+  imports: [IonicModule, VoucherItemComponent],
 })
-export class ProfilePage implements OnInit {
-
-  public profileForm!: FormGroup;
-
-  constructor(
-    private fb: FormBuilder,
-    private userService: UserService
-  ) { }
-
-  ngOnInit() {
-    this.profileForm = this.fb.group({
-      username: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-    });
-
-    this.userService.getUserProfile().subscribe(user => {
-      this.profileForm.patchValue(user);
-    });
-  }
-
-  saveProfile() {
-    if (this.profileForm.valid) {
-      this.userService.updateUserProfile(this.profileForm.value as User).subscribe(updatedUser => {
-        console.log('Profile updated:', updatedUser);
-        // Add toast notification here later
-      });
-    }
-  }
+export class ProfilePage {
+  user: User = { id: 1, username: 'alpha', email: 'a@a.com' };
+  reservations: Reservation[] = [];
 }

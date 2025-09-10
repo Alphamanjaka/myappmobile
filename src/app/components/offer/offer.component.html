@@ -1,18 +1,41 @@
-<ion-searchbar [(ngModel)]="searchTerm" (ionInput)="filterOffers()" placeholder="Rechercher une offre"></ion-searchbar>
+<ion-searchbar [(ngModel)]="searchTerm" (ionInput)="filterOffers()" placeholder="🔍 Rechercher une destination"
+  debounce="300" animated></ion-searchbar>
 
-<ion-select [(ngModel)]="selectedCategory" (ionChange)="filterOffers()" placeholder="Catégorie">
-  <ion-select-option value="">Toutes</ion-select-option>
-  <ion-select-option value="plage">Plage</ion-select-option>
-  <ion-select-option value="montagne">Montagne</ion-select-option>
-</ion-select>
+<ion-chip color="primary" *ngIf="selectedCategory" (click)="clearCategory()">
+  {{ selectedCategory }}
+  <ion-icon name="close-circle" (click)="clearCategory()" class="chip-icon"></ion-icon>
+</ion-chip>
 
-<ion-list>
-  <a *ngFor="let offer of filteredOffers" [routerLink]="['/offer-detail', offer.id]">
-    <ion-item>
-      <ion-label>
-        <h2>{{ offer.title }}</h2>
-        <p>{{ offer.description }}</p>
-      </ion-label>
-    </ion-item>
-  </a>
-</ion-list>
+<div scrollY="true" class="offer-scroll">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-md="6" size-lg="4" *ngFor="let offer of filteredOffers">
+        <ion-card class="offer-card" [routerLink]="['/offer', offer.id]">
+          <img src="https://ionicframework.com/docs/img/demos/card-media.png" alt="Image de {{ offer.title }}" />
+          <ion-card-header>
+            <ion-card-title>{{ offer.title }}</ion-card-title>
+            <ion-card-subtitle>
+              {{ offer.price | currency:'EUR' }}
+            </ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <p>{{ offer.description }}</p>
+            <ion-chip *ngFor="let cat of offer.destination.category" color="tertiary"
+              (click)="filterByCategory(cat.name)">
+              {{ cat.verbose_name || cat.name }}
+            </ion-chip>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-card *ngIf="filteredOffers.length === 0" color="light">
+    <ion-card-header>
+      <ion-card-title>Aucune offre trouvée</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Essayez une autre recherche ou filtre.
+    </ion-card-content>
+  </ion-card>
+</div>

@@ -1,34 +1,40 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { DestinationService } from '../../services/destination-service';
-import { Destination } from '../../interfaces/travel.models';
-import { Observable } from 'rxjs';
-import { Router, RouterLink } from '@angular/router';
+// src/app/home/home.page.ts
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, ViewChild } from '@angular/core';
+import { IonicSlides } from '@ionic/angular'; // pour le comportement natif Ionic (optionnel)
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule, RouterLink]
+  imports: [IonicModule,CommonModule],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA],
 })
-export class HomePage implements OnInit {
+export class HomePage {
+  @ViewChild('swiper', { static: false }) swiperRef?: ElementRef;
 
-  public featuredDestinations$!: Observable<Destination[]>;
+  // Ajoute IonicSlides si tu veux conserver le réglage natif (conseillé pour ressentir comme ion-slides)
+  swiperModules = [IonicSlides];
 
-  constructor(private destinationService: DestinationService, private router: Router) { }
+  featuredDestinations = [
+    { id: 1, name: 'Nosy Be', description: 'Plages et soleil', image: 'assets/nosybe.jpg' },
+    { id: 2, name: 'RN7', description: 'Route touristique', image: 'assets/rn7.jpg' },
+    // ...
+  ];
 
-  ngOnInit() {
-    this.featuredDestinations$ = this.destinationService.getAllDestinations();
+  onInit(e: any) {
+    console.log('swiper init', e);
+  }
+  onSlideChange(e: any) {
+    // e.target est le DOM element swiper-container
+    const active = this.swiperRef?.nativeElement.swiper?.activeIndex;
+    console.log('slide changed, activeIndex=', active);
   }
 
-  onSearchChange(event: any) {
-    const query = event.detail.value;
-    if (query) {
-      this.router.navigate(['/search', { query: query }]);
-    }
+  // Exemple: accéder à l'instance Swiper
+  goToNext() {
+    this.swiperRef?.nativeElement.swiper?.slideNext();
   }
-
 }

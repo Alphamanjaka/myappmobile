@@ -1,27 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { CartService } from '../../services/cart.service';
-import { CartItem } from '../../interfaces/travel.models';
-import { Observable } from 'rxjs';
-import { RouterLink } from '@angular/router';
+// src/app/cart/cart.page.ts
+import { Component } from '@angular/core';
+import { Cart } from 'src/app/interfaces/travel.models';
+import { BookingStepperComponent } from 'src/app/components/booking-stepper/booking-stepper.component';
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.page.html',
   styleUrls: ['./cart.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule, RouterLink]
+  imports: [IonicModule, BookingStepperComponent,CommonModule],
 })
-export class CartPage implements OnInit {
-
-  public cartItems$!: Observable<CartItem[]>;
-  public total = 0;
-
-  constructor(private cartService: CartService) { }
-
-  ngOnInit() {
-
+export class CartPage {
+  step = 1;
+  cart: Cart = { id: 1, user: { id: 1, username: 'alpha', email: 'a@a.com' }, created_at: new Date().toISOString(), items: [] };
+  checkout() {
+    this.step++;
   }
 }

@@ -1,0 +1,17 @@
+import { IonItem, IonIcon, IonLabel } from '@ionic/angular/standalone';
+
+// src/app/components/notification-item/notification-item.component.ts
+import { Component, Input } from '@angular/core';
+
+
+@Component({
+  selector: 'app-notification-item',
+  templateUrl: './notification-item.component.html',
+  styleUrls: ['./notification-item.component.scss'],
+  imports: [IonItem, IonIcon, IonLabel],
+  standalone: true,
+})
+export class NotificationItemComponent {
+  @Input() icon: string = 'notifications';
+  @Input() message: string = '';
+}

@@ -1,0 +1,11 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Notifications</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <app-notification-item *ngFor="let notif of notifications" [icon]="notif.icon"
+      [message]="notif.message"></app-notification-item>
+  </ion-list>
+</ion-content>

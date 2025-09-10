@@ -1,54 +1,22 @@
-<ion-header [translucent]="true">
+<!-- src/app/home/home.page.html -->
+<ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
     <ion-title>Accueil</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <div class="hero-section">
-    <img src="assets/images/hero-home.jpg" alt="Explorez Madagascar" class="hero-image" />
-    <div class="hero-content">
-      <h1>Découvrez Madagascar</h1>
-      <p>Votre aventure commence ici</p>
-      <ion-searchbar placeholder="Rechercher une destination..." (ionInput)="onSearchChange($event)"></ion-searchbar>
-    </div>
-  </div>
-
-  <div id="container">
-    <ion-list>
-      <ion-list-header>
-        <h2>Destinations Phares</h2>
-      </ion-list-header>
-      @if (featuredDestinations$ | async; as destinations) {
-      @for (dest of destinations; track dest.id) {
-      <ion-card [routerLink]="['/search', { query: dest.id }]">
-    <img src="https://ionicframework.com/docs/img/demos/card-media.png" alt="Silhouette of mountains">
-        <ion-card-header>
-          <ion-card-title>{{ dest.name }}</ion-card-title>
-          <ion-card-subtitle>
-            {{ dest.description| currency:'EUR' }} en moyenne
-          </ion-card-subtitle>
-        </ion-card-header>
-        <ion-card-content>
-          {{ dest.description }}
-        </ion-card-content>
-      </ion-card>
-      }
-      @empty {
-      <ion-card color="light">
-        <ion-card-header>
-          <ion-card-title>Aucune destination trouvée</ion-card-title>
-          <ion-card-subtitle>Essayez une autre recherche ou revenez plus tard</ion-card-subtitle>
-        </ion-card-header>
-        <ion-card-content>
-          Nous n’avons pas encore d’offres disponibles pour cette sélection.
-        </ion-card-content>
-      </ion-card>
-      }
-      }
-    </ion-list>
-  </div>
+<ion-content>
+  <swiper-container #swiper class="mySwiper" [pagination]="{ clickable: true }" [loop]="true"
+    [autoplay]="{ delay: 3500 }" [modules]="swiperModules" (swiperinit)="onInit($event)"
+    (swiperslidechange)="onSlideChange($event)" style="height:320px;">
+    <swiper-slide *ngFor="let dest of featuredDestinations">
+      <div class="slide-inner">
+        <img [src]="dest.image || 'assets/placeholder.jpg'" class="slide-img" />
+        <div class="slide-text">
+          <h2>{{ dest.name }}</h2>
+          <p>{{ dest.description }}</p>
+        </div>
+      </div>
+    </swiper-slide>
+  </swiper-container>
 </ion-content>

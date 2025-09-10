@@ -1,40 +1,46 @@
-import { Category } from './../../interfaces/travel.models';
-import { IonicModule } from '@ionic/angular';
-import { Component, OnInit, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import { Offer } from 'src/app/interfaces/travel.models';
 import { OfferService } from 'src/app/services/offer-service';
-import { CategoryService } from 'src/app/services/category-service';
+import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-
+import { CommonModule } from '@angular/common';
+import { IonicModule } from '@ionic/angular';
 @Component({
-  selector: 'app-offer-list',
+  selector: 'app-offer',
   templateUrl: './offer.component.html',
   styleUrls: ['./offer.component.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule, RouterLink],
+  imports: [FormsModule, RouterLink, CommonModule, IonicModule]
 })
 export class OfferComponent implements OnInit {
-  private offers: Offer[] = [];
-  private offerService = inject(OfferService);
-  private Categories: Category[] = [];
-  private categoryService = inject(CategoryService);
+  offers: Offer[] = [];
   filteredOffers: Offer[] = [];
   searchTerm: string = '';
   selectedCategory: string = '';
 
+  constructor(private offerService: OfferService) { }
+
   ngOnInit(): void {
-    this.offerService.getAllOffers().subscribe(offers => {
-      this.offers = offers;
-      this.filteredOffers = offers;
-    });
-    this.categoryService.getAllCategories().subscribe(categories => {
-      this.Categories = categories;
+    this.offerService.getAllOffers().subscribe(data => {
+      this.offers = data;
+      this.filteredOffers = data;
     });
   }
 
   filterOffers(): void {
+    this.filteredOffers = this.offers.filter(offer =>
+      offer.title.toLowerCase().includes(this.searchTerm.toLowerCase()) &&
+      (this.selectedCategory ? offer.destination.category.some(cat => cat.name === this.selectedCategory) : true)
+    );
+  }
 
+  filterByCategory(category: string): void {
+    this.selectedCategory = category;
+    this.filterOffers();
+  }
+
+  clearCategory(): void {
+    this.selectedCategory = '';
+    this.filterOffers();
   }
 }

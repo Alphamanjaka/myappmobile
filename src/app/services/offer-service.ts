@@ -19,8 +19,8 @@ export class OfferService {
   getOfferById(id: number): Observable<Offer> {
     return this.http.get<Offer>(`${this.apiUrl}/offers/${id}/`);
   }
-  getTopOffers(limit: number = 5): Observable<Offer[]> {
-    return this.http.get<Offer[]>(`${this.apiUrl}/offers/?limit=${limit}`);
+  getTopOffers(): Observable<Offer[]> {
+    return this.http.get<Offer[]>(`${this.apiUrl}/top-offers/`);
   }
 
 }

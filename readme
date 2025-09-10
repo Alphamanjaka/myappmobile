@@ -1,0 +1,76 @@
+Accueil
+
+Inspiration + Destinations phares (Nosy Be, RN7, Isalo)
+
+Liens rapides vers recherche
+
+Icône : 🏝️ (home)
+
+Recherche / Découverte
+
+Barre de recherche + filtres (budget, date, type activité)
+
+Liste des offres (cards avec image, prix, rating, CTA)
+
+Icône : 🔍 (search)
+
+Panier / Réservation
+
+Récap multi-produits (hôtel + activité + transport)
+
+Étapes checkout (infos, paiement, confirmation)
+
+Icône : 🛒 (cart)
+
+Profil / Espace client
+
+Infos personnelles
+
+Historique des réservations
+
+Bouton télécharger vouchers / factures PDF
+
+Icône : 👤 (person)
+
+Notifications / Offline
+
+Réservations accessibles hors ligne (cache)
+
+Centre de notifications (confirmation, rappel voyage)
+
+Icône : 🔔 (notifications)
+
+⚛️ Components modernes (Angular + Ionic)
+
+OfferCardComponent → card moderne avec image, titre, prix, rating (⭐)
+
+FilterBarComponent → filtres dynamiques (slider budget, date picker, select activité)
+
+BookingStepperComponent → étapes du checkout avec indicateur progressif
+
+VoucherItemComponent → carte voucher téléchargeable avec QR code
+
+NotificationItemComponent → card notification (icône + message + action)
+
+🗂️ Exemple d’arborescence
+src/app/
+ ├── tabs/
+ │    ├── tabs.page.html
+ │    ├── tabs.page.ts
+ │    └── tabs-routing.module.ts
+ ├── home/        # Page 1 : Accueil
+ ├── search/      # Page 2 : Recherche
+ ├── cart/        # Page 3 : Panier
+ ├── profile/     # Page 4 : Profil
+ ├── notifications/ # Page 5 : Notifications
+ └── components/
+      ├── offer-card/
+      ├── filter-bar/
+      ├── booking-stepper/
+      ├── voucher-item/
+      └── notification-item/
+
+
+👉 Résultat : une navigation fluide à onglets, 5 pages claires, des components réutilisables pour un look moderne (cards, icons, QR codes, stepper).
+
+Veux-tu que je te génère directement le code starter Ionic Angular (tabs + components) pour que tu puisses l’importer dans ton projet ?
