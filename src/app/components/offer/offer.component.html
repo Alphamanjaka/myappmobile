@@ -7,10 +7,12 @@
 </ion-select>
 
 <ion-list>
-  <ion-item *ngFor="let offer of filteredOffers">
-    <ion-label>
-      <h2>{{ offer.name }}</h2>
-      <p>{{ offer.description }}</p>
-    </ion-label>
-  </ion-item>
+  <a *ngFor="let offer of filteredOffers" [routerLink]="['/offer-detail', offer.id]">
+    <ion-item>
+      <ion-label>
+        <h2>{{ offer.title }}</h2>
+        <p>{{ offer.description }}</p>
+      </ion-label>
+    </ion-item>
+  </a>
 </ion-list>

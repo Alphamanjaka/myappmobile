@@ -5,7 +5,11 @@ export interface City {
   latitude: number;
   longitude: number;
 }
-
+export interface Category {
+  id: number;
+  name: string;
+  verbose_name?: string;
+}
 export interface Destination {
   id: number;
   name: string;
@@ -14,6 +18,7 @@ export interface Destination {
   image: string | null;
   latitude: number;
   longitude: number;
+  category: Category[];
 }
 
 export interface Offer {
