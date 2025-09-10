@@ -22,7 +22,6 @@
       "dom"
     ],
     "useDefineForClassFields": false,
-    "ignoreDeprecations": "6.0" // ✅ Silences deprecation warnings
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
