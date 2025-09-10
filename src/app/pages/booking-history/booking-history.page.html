@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Mes réservations</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngIf="bookings.length === 0">
+      <ion-label>Vous n'avez pas encore de réservations.</ion-label>
+    </ion-item>
+    <ion-card *ngFor="let booking of bookings">
+      <ion-card-header>
+        <ion-card-title>Réservation #{{ booking.id }}</ion-card-title>
+        <ion-card-subtitle>Date: {{ booking.bookingDate | date:'shortDate' }}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Statut: {{ booking.status }}</p>
+        <p>Total: {{ booking.totalPrice | currency:'EUR' }}</p>
+        <ion-list>
+          <ion-list-header>
+            <ion-label>Détails des articles</ion-label>
+          </ion-list-header>
+          <ion-item *ngFor="let item of booking.items">
+            <ion-label>
+              <h3>{{ item.package.name }}</h3>
+              <p>Voyageurs: {{ item.travelers }}</p>
+              <p>Date de voyage: {{ item.date | date:'shortDate' }}</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+</ion-content>

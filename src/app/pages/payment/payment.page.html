@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/booking"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Paiement</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list-header>
+    <ion-label>Choisissez votre mode de paiement</ion-label>
+  </ion-list-header>
+
+  <ion-card (click)="processPayment('Mvola')">
+    <ion-card-header>
+      <ion-card-title>Mvola</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Paiement mobile via Mvola.
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card (click)="processPayment('Orange Money')">
+    <ion-card-header>
+      <ion-card-title>Orange Money</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Paiement mobile via Orange Money.
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card (click)="processPayment('Airtel Money')">
+    <ion-card-header>
+      <ion-card-title>Airtel Money</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Paiement mobile via Airtel Money.
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card (click)="processPayment('Carte Bancaire')">
+    <ion-card-header>
+      <ion-card-title>Carte Bancaire (Visa/Mastercard)</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Paiement sécurisé par carte bancaire.
+    </ion-card-content>
+  </ion-card>
+</ion-content>

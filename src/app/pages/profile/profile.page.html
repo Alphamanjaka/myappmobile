@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Profil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="profileForm" (ngSubmit)="saveProfile()">
+    <ion-list-header>
+      <ion-label>Mes informations</ion-label>
+    </ion-list-header>
+
+    <ion-item>
+      <ion-input label="Prénom" formControlName="firstName"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Nom" formControlName="lastName"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Email" formControlName="email" type="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Téléphone" formControlName="phone" type="tel"></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" type="submit" [disabled]="profileForm.invalid">Enregistrer</ion-button>
+  </form>
+</ion-content>
