@@ -6,13 +6,25 @@
 <ion-content>
   <app-booking-stepper [step]="step" [max]="3"></app-booking-stepper>
   <ion-list>
-    <ion-item *ngFor="let item of cart.items">
+    @for (item of cart.items; track $index) {
+    <ion-item>
       <ion-label>
         <h2>{{ item.offer.title }}</h2>
         <p>{{ item.quantity }} × {{ item.offer.price | currency:'MGA' }}</p>
       </ion-label>
       <ion-button fill="outline" slot="end">Supprimer</ion-button>
     </ion-item>
+    }@empty {
+    <ion-card color="light">
+      <ion-card-header>
+        <ion-card-title>Votre panier est vide</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        Ajoutez des offres à votre panier pour les réserver.
+      </ion-card-content>
+    </ion-card>
+
+    }
   </ion-list>
   <ion-button expand="full" color="success" (click)="checkout()">Passer au paiement</ion-button>
 </ion-content>

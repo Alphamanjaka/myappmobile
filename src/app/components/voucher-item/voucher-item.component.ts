@@ -3,6 +3,8 @@ import { IonicModule } from '@ionic/angular';
 import { Component, Input } from '@angular/core';
 import { Reservation } from 'src/app/interfaces/travel.models';
 import { CommonModule } from '@angular/common';
+import { addIcons } from 'ionicons';
+import { create, download } from 'ionicons/icons';
 
 
 @Component({
@@ -14,4 +16,11 @@ import { CommonModule } from '@angular/common';
 })
 export class VoucherItemComponent {
   @Input() reservation!: Reservation;
+
+  constructor() {
+    addIcons({
+      download,
+      create
+    });
+  }
 }

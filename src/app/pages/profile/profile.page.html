@@ -15,6 +15,18 @@
   </ion-list>
   <ion-list>
     <ion-list-header>Mes réservations</ion-list-header>
-    <app-voucher-item *ngFor="let res of reservations" [reservation]="res"></app-voucher-item>
+    @for(res of reservations; track res.id) {
+    <app-voucher-item [reservation]="res"></app-voucher-item>
+    }@empty {
+    <ion-card color="light">
+      <ion-card-header>
+        <ion-card-title>Aucune réservation</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        Vous n'avez pas encore effectué de réservations.
+      </ion-card-content>
+    </ion-card>
+    }
+
   </ion-list>
 </ion-content>

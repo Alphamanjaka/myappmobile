@@ -12,7 +12,9 @@ import { NotificationItemComponent } from 'src/app/components/notification-item/
 })
 export class NotificationsPage {
   notifications = [
-    { icon: 'checkmark-circle', message: 'Votre réservation est confirmée' },
-    { icon: 'alert-circle', message: 'Votre paiement est en attente' }
+    { icon: 'checkmark-circle-outline', message: 'Votre réservation est confirmée' },
+    { icon: 'alert-circle-outline', message: 'Votre paiement est en attente' }
   ];
+  constructor() {
+  }
 }

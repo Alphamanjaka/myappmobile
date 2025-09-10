@@ -2,6 +2,8 @@ import { IonItem, IonIcon, IonLabel } from '@ionic/angular/standalone';
 
 // src/app/components/notification-item/notification-item.component.ts
 import { Component, Input } from '@angular/core';
+import { addIcons } from 'ionicons';
+import { checkmarkCircleOutline, alertCircleOutline } from 'ionicons/icons';
 
 
 @Component({
@@ -14,4 +16,8 @@ import { Component, Input } from '@angular/core';
 export class NotificationItemComponent {
   @Input() icon: string = 'notifications';
   @Input() message: string = '';
+
+  constructor() {
+    addIcons({ checkmarkCircleOutline, alertCircleOutline });
+  }
 }

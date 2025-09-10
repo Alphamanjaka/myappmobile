@@ -5,7 +5,17 @@
 </ion-header>
 <ion-content>
   <ion-list>
-    <app-notification-item *ngFor="let notif of notifications" [icon]="notif.icon"
-      [message]="notif.message"></app-notification-item>
+    @for(notif of notifications; track notif.icon) {
+      <app-notification-item [icon]="notif.icon" [message]="notif.message"></app-notification-item>
+    }@empty {
+      <ion-card color="light">
+        <ion-card-header>
+          <ion-card-title>Aucune notification</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          Vous n'avez pas de nouvelles notifications pour le moment.
+        </ion-card-content>
+      </ion-card>
+    }
   </ion-list>
 </ion-content>
