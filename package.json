@@ -29,6 +29,7 @@
     "@capacitor/core": "latest",
     "@capacitor/haptics": "latest",
     "@capacitor/keyboard": "latest",
+    "@capacitor/splash-screen": "7.0.3",
     "@capacitor/status-bar": "latest",
     "@ionic/angular": "^8.0.0",
     "@ionic/vue": "^8.7.3",

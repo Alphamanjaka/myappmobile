@@ -1,4 +1,11 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  @if (loading) {
+    <div class="splash-screen flex flex-col items-center justify-center h-full bg-brand text-white">
+      <img src="assets/logo.png" alt="Logo" class="w-24 h-24 mb-4 animate-bounce" />
+      <h1 class="text-2xl font-bold">Travel Agency</h1>
+      <ion-spinner name="crescent" color="light" class="mt-4"></ion-spinner>
+    </div>
+  } @else {
+    <ion-router-outlet></ion-router-outlet>
+  }
 </ion-app>
-
