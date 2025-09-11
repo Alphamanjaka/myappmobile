@@ -2,12 +2,13 @@ import { inject, Injectable } from '@angular/core';
 import { Offer } from '../interfaces/travel.models';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OfferService {
-  private apiUrl = 'http://127.0.0.1:8000/api'; // Remplacez par l'URL de votre API Django
+  private apiUrl = environment.apiUrl;
   private http = inject(HttpClient);
 
 

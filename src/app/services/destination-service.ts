@@ -2,6 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { Destination } from '../interfaces/travel.models';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -9,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DestinationService {
 
-  private apiUrl = 'http://127.0.0.1:8000/api'; // Remplacez par l'URL de votre API Django
+  private apiUrl = environment.apiUrl;
   private http = inject(HttpClient);
 
   constructor() { }
