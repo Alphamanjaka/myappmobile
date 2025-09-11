@@ -22,6 +22,9 @@ export class OfferService {
   getTopOffers(): Observable<Offer[]> {
     return this.http.get<Offer[]>(`${this.apiUrl}/top-offers/`);
   }
+  getOffers(): Observable<Offer[]> {
+    return this.getAllOffers();
+  }
 
 }
 

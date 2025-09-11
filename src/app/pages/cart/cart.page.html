@@ -5,14 +5,14 @@
 </ion-header>
 <ion-content>
   <app-booking-stepper [step]="step" [max]="3"></app-booking-stepper>
-  <ion-list>
+  <ion-list class="divide-y divide-gray-200 bg-white rounded-xl shadow">
     @for (item of cart.items; track $index) {
-    <ion-item>
+    <ion-item class="px-4 py-2">
       <ion-label>
-        <h2>{{ item.offer.title }}</h2>
-        <p>{{ item.quantity }} × {{ item.offer.price | currency:'MGA' }}</p>
+        <h2 class="font-semibold">{{ item.offer.title }}</h2>
+        <p class="text-sm text-gray-500">{{ item.quantity }} × {{ item.offer.price | currency:'MGA' }}</p>
       </ion-label>
-      <ion-button fill="outline" slot="end">Supprimer</ion-button>
+      <ion-button fill="outline" color="danger"  slot="end">Supprimer</ion-button>
     </ion-item>
     }@empty {
     <ion-card color="light">

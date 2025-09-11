@@ -19,6 +19,9 @@ export class DestinationService {
     // Exemple d'appel API pour toutes les destinations
     return this.http.get<Destination[]>(`${this.apiUrl}/destinations/`);
   }
+  getDestinations(): Observable<Destination[]> {
+    return this.getAllDestinations();
+  }
 }
 
 

@@ -13,10 +13,10 @@
       </ion-label>
     </ion-item>
   </ion-list>
-  <ion-list>
-    <ion-list-header>Mes réservations</ion-list-header>
+  <ion-list class="bg-white rounded-xl shadow">
+    <ion-list-header class="font-bold text-brand">Mes réservations</ion-list-header>
     @for(res of reservations; track res.id) {
-    <app-voucher-item [reservation]="res"></app-voucher-item>
+    <app-voucher-item class="hover:bg-gray-50 transition" [reservation]="res"></app-voucher-item>
     }@empty {
     <ion-card color="light">
       <ion-card-header>
@@ -27,6 +27,5 @@
       </ion-card-content>
     </ion-card>
     }
-
   </ion-list>
 </ion-content>

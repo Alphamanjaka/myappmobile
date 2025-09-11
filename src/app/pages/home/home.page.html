@@ -1,23 +1,67 @@
-<!-- src/app/home/home.page.html -->
 <ion-header>
   <ion-toolbar>
     <ion-title>Accueil</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <swiper-container #swiper class="mySwiper" [pagination]="{ clickable: true }" [loop]="true"
-    [autoplay]="{ delay: 3500 }" [modules]="swiperModules" (swiperinit)="onInit($event)"
-    (swiperslidechange)="onSlideChange($event)" style="height:320px;">
+<ion-content class="p-4 bg-gray-50">
+
+  <!-- 1. Hero Swiper -->
+  <swiper-container [pagination]="{ clickable: true }" [autoplay]="{ delay: 4000 }" [loop]="true"
+    class="rounded-2xl shadow-lg overflow-hidden mb-6">
     <swiper-slide *ngFor="let dest of featuredDestinations">
-      <div class="slide-inner">
-        <img [src]="dest.image || 'assets/placeholder.jpg'" class="slide-img" />
-        <div class="slide-text">
-          <h2>{{ dest.name }}</h2>
-          <p>{{ dest.description }}</p>
+      <div class="relative">
+        <img [src]="dest.image" class="w-full h-56 object-cover" />
+        <div class="absolute bottom-0 w-full bg-black bg-opacity-40 text-white p-4">
+          <h2 class="text-lg font-bold">{{ dest.name }}</h2>
+          <p class="text-sm">{{ dest.description }}</p>
         </div>
       </div>
     </swiper-slide>
   </swiper-container>
-  
+
+  <!-- 2. Catégories rapides -->
+  <h2 class="text-lg font-bold mb-2">Explorer par catégorie</h2>
+  <div class="grid grid-cols-3 gap-3 mb-6">
+    <div class="flex flex-col items-center bg-white rounded-xl shadow p-3">
+      <ion-icon name="sunny-outline" class="text-2xl text-yellow-500"></ion-icon>
+      <span class="text-sm mt-1">Plages</span>
+    </div>
+    <div class="flex flex-col items-center bg-white rounded-xl shadow p-3">
+      <ion-icon name="trail-sign-outline" class="text-2xl text-green-500"></ion-icon>
+      <span class="text-sm mt-1">Aventure</span>
+    </div>
+    <div class="flex flex-col items-center bg-white rounded-xl shadow p-3">
+      <ion-icon name="library-outline" class="text-2xl text-blue-500"></ion-icon>
+      <span class="text-sm mt-1">Culture</span>
+    </div>
+  </div>
+
+  <!-- 3. Offres spéciales -->
+  <h2 class="text-lg font-bold mb-2">Offres spéciales</h2>
+  <div class="flex overflow-x-auto space-x-4 mb-6 pb-2">
+    <div *ngFor="let offer of specialOffers" class="min-w-[220px] bg-white rounded-xl shadow-md overflow-hidden">
+      <img [src]="offer.destination.image" class="h-32 w-full object-cover" />
+      <div class="p-3">
+        <h3 class="text-sm font-semibold line-clamp-1">{{ offer.title }}</h3>
+        <p class="text-xs text-gray-500 line-clamp-2">{{ offer.description }}</p>
+        <div class="flex justify-between items-center mt-2">
+          <span class="text-brand font-bold">{{ offer.price | currency:'MGA' }}</span>
+          <ion-button size="small" color="primary">Réserver</ion-button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Destinations populaires -->
+  <h2 class="text-lg font-bold mb-2">Destinations populaires</h2>
+  <div class="grid grid-cols-2 gap-3 mb-6">
+    <div *ngFor="let dest of popularDestinations" class="bg-white rounded-xl shadow overflow-hidden">
+      <img [src]="dest.image" class="h-28 w-full object-cover" />
+      <div class="p-2">
+        <h3 class="text-sm font-semibold">{{ dest.name }}</h3>
+        <p class="text-xs text-gray-500 line-clamp-2">{{ dest.description }}</p>
+      </div>
+    </div>
+  </div>
 </ion-content>

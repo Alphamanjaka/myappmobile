@@ -6,7 +6,7 @@
 </ion-header>
 <ion-content>
   @for(offer of offers; track offer.id){
-  <app-offer-card [offer]="offer"></app-offer-card>
+  <app-offer-card class="transition-transform transform hover:scale-105" [offer]="offer"></app-offer-card>
   }@empty {
   <ion-card color="light">
     <ion-card-header>

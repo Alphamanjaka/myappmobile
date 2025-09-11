@@ -1,6 +1,8 @@
 // src/app/components/filter-bar/filter-bar.component.ts
 import { Component, Output, EventEmitter } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
+import { addIcons } from 'ionicons';
+import { optionsOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-filter-bar',
@@ -19,5 +21,10 @@ export class FilterBarComponent {
   }
   openFilters() {
     this.filter.emit();
+  }
+  constructor() {
+    addIcons({
+      optionsOutline
+    })
   }
 }
