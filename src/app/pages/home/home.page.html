@@ -1,73 +1,78 @@
-<ion-header translucent class="pt-safe">
+<ion-header translucent>
   <ion-toolbar>
     <ion-title>Accueil</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="p-4 bg-gray-50">
+<ion-content fullscreen class="home-content">
 
   <!-- 1. Hero Swiper -->
-  <swiper-container *ngIf="!loading; else swiperSkeleton" [pagination]="{ clickable: true }"
-    [autoplay]="{ delay: 4000 }" [loop]="true" class="rounded-2xl shadow-lg overflow-hidden mb-6">
-    <swiper-slide *ngFor="let dest of featuredDestinations">
-      <div class="relative">
-        <img [src]="dest.images[0]" class="w-full h-56 object-cover" />
-        <div class="absolute bottom-0 w-full bg-black bg-opacity-40 text-white p-4">
-          <h2 class="text-lg font-bold">{{ dest.name }}</h2>
-          <p class="text-sm">{{ dest.description }}</p>
+  <div class="swiper-wrapper">
+    <swiper-container [pagination]="{ clickable: true }" [autoplay]="{ delay: 4000 }" [loop]="true" class="mySwiper">
+      <swiper-slide *ngFor="let dest of featuredDestinations">
+        <div class="slide-inner">
+          <img [src]="dest.images[0]" class="slide-img" />
+          <div class="slide-overlay">
+            <h2 class="slide-title">{{ dest.name }}</h2>
+            <p class="slide-description">{{ dest.description }}</p>
+          </div>
         </div>
-      </div>
-    </swiper-slide>
-  </swiper-container>
-
-  <!-- Skeleton Swiper -->
-  <ng-template #swiperSkeleton>
-    <div class="w-full h-56 rounded-2xl bg-gray-200 animate-pulse mb-6"></div>
-  </ng-template>
-
+      </swiper-slide>
+    </swiper-container>
+  </div>
 
   <!-- 2. Catégories rapides -->
-  <h2 class="text-lg font-bold mb-2">Explorer par catégorie</h2>
-  <div class="grid grid-cols-3 gap-3 mb-6">
-    <div class="flex flex-col items-center bg-white rounded-xl shadow p-3">
-      <ion-icon name="sunny-outline" class="text-2xl text-yellow-500"></ion-icon>
-      <span class="text-sm mt-1">Plages</span>
-    </div>
-    <div class="flex flex-col items-center bg-white rounded-xl shadow p-3">
-      <ion-icon name="trail-sign-outline" class="text-2xl text-green-500"></ion-icon>
-      <span class="text-sm mt-1">Aventure</span>
-    </div>
-    <div class="flex flex-col items-center bg-white rounded-xl shadow p-3">
-      <ion-icon name="library-outline" class="text-2xl text-blue-500"></ion-icon>
-      <span class="text-sm mt-1">Culture</span>
-    </div>
-  </div>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Explorer par catégorie</ion-card-title>
+    </ion-card-header>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="4" class="category-col">
+          <ion-card class="category-card">
+            <ion-icon name="sunny-outline" class="category-icon" color="warning"></ion-icon>
+            <ion-label>Plages</ion-label>
+          </ion-card>
+        </ion-col>
+        <ion-col size="4" class="category-col">
+          <ion-card class="category-card">
+            <ion-icon name="trail-sign-outline" class="category-icon" color="success"></ion-icon>
+            <ion-label>Aventure</ion-label>
+          </ion-card>
+        </ion-col>
+        <ion-col size="4" class="category-col">
+          <ion-card class="category-card">
+            <ion-icon name="library-outline" class="category-icon" color="primary"></ion-icon>
+            <ion-label>Culture</ion-label>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
 
   <!-- 3. Offres spéciales -->
-  <h2 class="text-lg font-bold mb-2">Offres spéciales</h2>
-  <div *ngIf="!loading; else offersSkeleton" class="flex overflow-x-auto space-x-4 mb-6 pb-2">
-    <app-offer-card-horizontal *ngFor="let offer of specialOffers" [offer]="offer"></app-offer-card-horizontal>
-  </div>
-
-  <!-- Skeleton -->
-  <ng-template #offersSkeleton>
-    <div class="flex overflow-x-auto space-x-4 mb-6 pb-2">
-      <div *ngFor="let i of [1,2,3]" class="min-w-[220px] bg-gray-200 rounded-xl animate-pulse h-44"></div>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Offres spéciales</ion-card-title>
+    </ion-card-header>
+    <div class="offer-scroll-wrapper">
+      <app-offer-card-horizontal *ngFor="let offer of specialOffers" [offer]="offer">
+      </app-offer-card-horizontal>
     </div>
-  </ng-template>
-
+  </ion-card>
 
   <!-- 4. Destinations populaires -->
-  <h2 class="text-lg font-bold mb-2">Destinations populaires</h2>
-  <div *ngIf="!loading; else popularSkeleton" class="grid grid-cols-2 gap-3 mb-6">
-    <app-destination-card *ngFor="let dest of popularDestinations" [destination]="dest"></app-destination-card>
-  </div>
-
-  <!-- Skeleton -->
-  <ng-template #popularSkeleton>
-    <div class="grid grid-cols-2 gap-3 mb-6">
-      <div *ngFor="let i of [1,2,3,4]" class="bg-gray-200 h-32 rounded-xl animate-pulse"></div>
-    </div>
-  </ng-template>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Destinations populaires</ion-card-title>
+    </ion-card-header>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6" *ngFor="let dest of popularDestinations">
+          <app-destination-card [destination]="dest"></app-destination-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
 
 </ion-content>

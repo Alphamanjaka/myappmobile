@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonApp, IonRouterOutlet, IonSpinner } from '@ionic/angular/standalone';
+import { IonApp, IonRouterOutlet, IonSpinner, IonContent } from '@ionic/angular/standalone';
 import { register } from 'swiper/element/bundle';
 import { SplashScreen } from '@capacitor/splash-screen';
 register();
@@ -8,7 +8,7 @@ register();
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
   standalone: true,
-  imports: [IonSpinner, IonApp, IonRouterOutlet],
+  imports: [IonContent, IonSpinner, IonApp, IonRouterOutlet],
 })
 export class AppComponent implements OnInit {
   loading = true;

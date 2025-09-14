@@ -1,13 +1,59 @@
-// Copyright 2025 alpha
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     https://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
+.offer-card {
+  min-width: 200px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.offer-swiper {
+  width: 100%;
+  height: 130px;
+  border-bottom: 1px solid #eee;
+}
+
+.offer-image {
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
+}
+
+ion-card-header {
+  background-color: #fff;
+  padding: 12px;
+}
+
+ion-card-title {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+ion-card-subtitle {
+  font-size: 0.75rem;
+  color: #888;
+}
+
+ion-card-content {
+  padding: 12px;
+}
+
+.offer-description {
+  font-size: 0.75rem;
+  color: #666;
+  line-height: 1.4;
+  max-height: 2.8em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.offer-footer {
+  margin-top: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.offer-price {
+  color: var(--ion-color-primary);
+  font-weight: bold;
+  font-size: 0.875rem;
+}

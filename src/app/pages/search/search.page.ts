@@ -1,23 +1,24 @@
 import { IonicModule } from '@ionic/angular';
 // src/app/search/search.page.ts
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Offer, Destination } from 'src/app/interfaces/travel.models';
 import { FilterBarComponent } from 'src/app/components/filter-bar/filter-bar.component';
 import { CommonModule } from '@angular/common';
-import { OfferService } from 'src/app/services/offer-service';
 import { OfferCardHorizontalComponent } from "src/app/components/offer-card-horizontal/offer-card-horizontal.component";
-
+import { FiltersModalComponent } from 'src/app/components/filters-modal/filters-modal.component';
+import { ModalController } from '@ionic/angular';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.page.html',
   styleUrls: ['./search.page.scss'],
   standalone: true,
-  imports: [IonicModule, FilterBarComponent, CommonModule, OfferCardHorizontalComponent],
+  imports: [IonicModule, FilterBarComponent, CommonModule, OfferCardHorizontalComponent,FormsModule],
 })
-export class SearchPage {
-  private offerServices = inject(OfferService);
-
+export class SearchPage implements OnInit {
+  allOffers: Offer[] = [];
+  loading = false;
   featuredDestinations: Destination[] = [
     {
       id: 1,
@@ -43,46 +44,130 @@ export class SearchPage {
     },
   ];
 
-  offers: Offer[] = [
-    {
-      id: 1,
-      destination: this.featuredDestinations[0],
-      title: 'Luxury Villa in Maldives',
-      description: '7-night stay in a water villa with private pool.',
-      price: 3000,
-      start_date: '2025-10-01',
-      end_date: '2025-10-31',
-      available_slots: 10,
-      created_by: null,
-      cancellation_policy: 'Flexible',
-    },
-    {
-      id: 2,
-      destination: this.featuredDestinations[1],
-      title: 'Ski Adventure in the Alps',
-      description: 'Full-week ski pass and accommodation in a cozy chalet.',
-      price: 1500,
-      start_date: '2026-01-15',
-      end_date: '2026-03-15',
-      available_slots: 20,
-      created_by: null,
-      cancellation_policy: 'Moderate',
-    },
-  ];
+  constructor(private modalCtrl: ModalController) {
+
+  }
+
+  offers: Offer[] = [];
+  ngOnInit() {
+    this.seedTestData();
+  }
+
+  seedTestData() {
+    this.loading = true;
+
+    // Simule un chargement
+    setTimeout(() => {
+      this.allOffers = [
+        {
+          id: 1,
+          title: 'Séjour à Nosy Be',
+          description: 'Profitez des plages paradisiaques et du soleil malgache.',
+          price: 450000,
+          destination: this.featuredDestinations[1],
+          available_slots: 5,
+          start_date: '2025-10-01',
+          end_date: '2025-10-07',
+          cancellation_policy: 'Annulation gratuite jusqu’à 48h avant le départ',
+          created_by: null,
+        },
+        {
+          id: 2,
+          title: 'Randonnée à Andringitra',
+          description: 'Explorez les montagnes et les paysages spectaculaires.',
+          price: 320000,
+          destination: this.featuredDestinations[0],
+          available_slots: 8,
+          start_date: '2025-11-15',
+          end_date: '2025-11-20',
+          cancellation_policy: 'Non remboursable',
+          created_by: null,
+        },
+        {
+          id: 1,
+          destination: this.featuredDestinations[1],
+          title: 'Luxury Villa in Maldives',
+          description: '7-night stay in a water villa with private pool.',
+          price: 3000,
+          start_date: '2025-10-01',
+          end_date: '2025-10-31',
+          available_slots: 10,
+          created_by: null,
+          cancellation_policy: 'Flexible',
+        },
+        {
+          id: 2,
+          destination: this.featuredDestinations[1],
+          title: 'Ski Adventure in the Alps',
+          description: 'Full-week ski pass and accommodation in a cozy chalet.',
+          price: 1500,
+          start_date: '2026-01-15',
+          end_date: '2026-03-15',
+          available_slots: 20,
+          created_by: null,
+          cancellation_policy: 'Moderate',
+        },
+      ];
+
+      this.offers = [...this.allOffers];
+      this.loading = false;
+    }, 1000);
+  }
 
   onSearch(query: string) {
-    // TODO: filter offers from API
-    console.log(query);
+    const lowerQuery = query.toLowerCase().trim();
+    this.offers = this.allOffers.filter((offer) =>
+      offer.title.toLowerCase().includes(lowerQuery) ||
+      offer.description.toLowerCase().includes(lowerQuery) ||
+      offer.destination.name.toLowerCase().includes(lowerQuery)
+    );
   }
-  openFilters() {
-    // TODO: open modal with filters
-    console.log('open filters');
 
+  async openFilters() {
+    const modal = await this.modalCtrl.create({
+      component: FiltersModalComponent,
+    });
+
+    modal.onDidDismiss().then((result) => {
+      if (result.data) {
+        this.applyAdvancedFilters(result.data);
+      }
+    });
+
+    await modal.present();
   }
 
-  ngOnInit(): void {
-    // this.offerServices.getAllOffers().subscribe(data => {
-    //   this.offers = data;
-    // });
+  trackOffer(index: number, offer: Offer) {
+    return offer.id;
+  }
+
+  sortByPrice(order: 'asc' | 'desc') {
+    this.offers.sort((a, b) =>
+      order === 'asc' ? a.price - b.price : b.price - a.price
+    );
+  }
+  applyAdvancedFilters(filters: any) {
+    let filtered = [...this.allOffers];
+
+    if (filters.priceOrder === 'asc') {
+      filtered.sort((a, b) => a.price - b.price);
+    } else if (filters.priceOrder === 'desc') {
+      filtered.sort((a, b) => b.price - a.price);
+    }
+
+    if (filters.destination) {
+      filtered = filtered.filter((o) =>
+        o.destination.name.toLowerCase().includes(filters.destination.toLowerCase())
+      );
+    }
+
+    if (filters.dateRange.start && filters.dateRange.end) {
+      filtered = filtered.filter((o) =>
+        new Date(o.start_date) >= new Date(filters.dateRange.start) &&
+        new Date(o.end_date) <= new Date(filters.dateRange.end)
+      );
+    }
+
+    this.offers = filtered;
   }
 }

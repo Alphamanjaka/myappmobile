@@ -1,0 +1,34 @@
+<!-- filters-modal.component.html -->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Filtres avancés</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="submit()">Appliquer</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Tri par prix</ion-label>
+    <ion-select [(ngModel)]="filters.priceOrder">
+      <ion-select-option value="asc">Croissant</ion-select-option>
+      <ion-select-option value="desc">Décroissant</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Destination</ion-label>
+    <ion-input [(ngModel)]="filters.destination" placeholder="Ex: Nosy Be"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Date de début</ion-label>
+    <ion-datetime [(ngModel)]="filters.dateRange.start"></ion-datetime>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Date de fin</ion-label>
+    <ion-datetime [(ngModel)]="filters.dateRange.end"></ion-datetime>
+  </ion-item>
+</ion-content>

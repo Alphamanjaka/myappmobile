@@ -1,0 +1,54 @@
+.offer-horizontal-card {
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.03);
+  }
+}
+
+.offer-image {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+ion-card-content {
+  padding: 12px;
+}
+
+.offer-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.offer-description {
+  font-size: 0.75rem;
+  color: #666;
+  line-height: 1.4;
+  max-height: 2.8em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.offer-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.offer-price {
+  font-weight: bold;
+  color: var(--ion-color-primary);
+  font-size: 0.875rem;
+}
