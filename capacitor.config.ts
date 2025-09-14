@@ -1,3 +1,4 @@
+import { StatusBarInfo } from './node_modules/@capacitor/status-bar/dist/esm/definitions.d';
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
@@ -14,7 +15,13 @@ const config: CapacitorConfig = {
       androidSpinnerStyle: "large",
       iosSpinnerStyle: "small",
       spinnerColor: "#ffffff"
+    },
+    StatusBar: {
+      overlaysWebView: false,
+      style: 'DARK',
+      backgroundColor: '#ffffff'
     }
+
   }
 };
 

@@ -1,21 +1,50 @@
-<ion-header>
+<ion-header translucent>
   <ion-toolbar>
-    <ion-title>Panier</ion-title>
+    <ion-title>🛒 Panier</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content>
+
+<ion-content class="cart-content" fullscreen>
   <app-booking-stepper [step]="step" [max]="3"></app-booking-stepper>
-  <ion-list class="divide-y divide-gray-200 bg-white rounded-xl shadow">
-    @for (item of cart.items; track $index) {
-    <ion-item class="px-4 py-2">
-      <ion-label>
-        <h2 class="font-semibold">{{ item.offer.title }}</h2>
-        <p class="text-sm text-gray-500">{{ item.quantity }} × {{ item.offer.price | currency:'MGA' }}</p>
-      </ion-label>
-      <ion-button fill="outline" color="danger"  slot="end">Supprimer</ion-button>
-    </ion-item>
-    }@empty {
-    <ion-card color="light">
+
+  <ng-container *ngIf="cart.items.length > 0; else emptyCart">
+    <ion-list class="cart-list">
+      <ion-item-sliding *ngFor="let item of cart.items; trackBy: trackItem">
+        <ion-item>
+          <ion-label>
+            <h2 class="item-title">{{ item.offer.title }}</h2>
+            <p class="item-subtitle">
+              {{ item.quantity }} × {{ item.offer.price | currency:'MGA' }}
+            </p>
+          </ion-label>
+          <ion-button fill="outline" color="danger" slot="end" (click)="removeItem(item)">
+            Supprimer
+          </ion-button>
+        </ion-item>
+        <ion-item-options side="end">
+          <ion-item-option color="danger" (click)="removeItem(item)">
+            Supprimer
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+
+    <ion-card class="cart-summary">
+      <ion-card-header>
+        <ion-card-title>Total</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p class="total-price">{{ getTotal() | currency:'MGA' }}</p>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-button expand="block" color="success" (click)="checkout()">
+      Passer au paiement
+    </ion-button>
+  </ng-container>
+
+  <ng-template #emptyCart>
+    <ion-card color="light" class="empty-cart-card">
       <ion-card-header>
         <ion-card-title>Votre panier est vide</ion-card-title>
       </ion-card-header>
@@ -23,8 +52,5 @@
         Ajoutez des offres à votre panier pour les réserver.
       </ion-card-content>
     </ion-card>
-
-    }
-  </ion-list>
-  <ion-button expand="full" color="success" (click)="checkout()">Passer au paiement</ion-button>
+  </ng-template>
 </ion-content>

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { IonApp, IonRouterOutlet, IonSpinner, IonContent } from '@ionic/angular/standalone';
 import { register } from 'swiper/element/bundle';
 import { SplashScreen } from '@capacitor/splash-screen';
+import { StatusBar, Style } from '@capacitor/status-bar';
+
 register();
 @Component({
   selector: 'app-root',
@@ -16,7 +18,8 @@ export class AppComponent implements OnInit {
     setTimeout(() => {
       SplashScreen.hide();
     }, 100);
-
+    StatusBar.setOverlaysWebView({ overlay: false });
+    StatusBar.setStyle({ style: Style.Dark }); // ou Style.Light selon ton thème
   }
   ngOnInit() {
     // Simule un délai avant d'afficher Home

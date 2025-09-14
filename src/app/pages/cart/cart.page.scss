@@ -1,0 +1,39 @@
+.cart-content {
+  padding: 16px;
+  background: var(--ion-color-light);
+}
+
+.cart-list {
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  margin-bottom: 16px;
+}
+
+.item-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #222;
+}
+
+.item-subtitle {
+  font-size: 0.75rem;
+  color: #666;
+}
+
+.cart-summary {
+  margin-bottom: 16px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.total-price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--ion-color-primary);
+}
+
+.empty-cart-card {
+  margin-top: 32px;
+  text-align: center;
+}
