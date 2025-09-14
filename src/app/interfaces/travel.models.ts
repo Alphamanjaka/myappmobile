@@ -15,7 +15,7 @@ export interface Destination {
   name: string;
   city: City | null;
   description: string;
-  image: string | null;
+  images: string[];
   latitude: number;
   longitude: number;
   category: Category[];

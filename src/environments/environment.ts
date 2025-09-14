@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://travel-agency-2er9.onrender.com/api'
+  apiUrl: 'https://localhost:8000/api'
 };
 
 /*

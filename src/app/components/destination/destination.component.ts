@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { DestinationService } from 'src/app/services/destination-service';
 import { Destination } from 'src/app/interfaces/travel.models';
 import { CommonModule } from '@angular/common';
@@ -14,8 +14,9 @@ import { IonicModule } from '@ionic/angular';
   standalone: true,
 })
 export class DestinationComponent implements OnInit {
+  private destinationService = inject(DestinationService);
+
   destinations: Destination[] = [];
-  constructor(private destinationService: DestinationService) { }
 
   ngOnInit() {
     this.destinationService.getAllDestinations().subscribe(destinations => {

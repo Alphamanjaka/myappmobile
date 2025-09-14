@@ -1,0 +1,23 @@
+<div class="bg-white rounded-xl shadow-md hover:shadow-lg transition duration-300 overflow-hidden cursor-pointer"
+  (click)="goToDetail(offer.id)">
+  <img [src]="offer.destination.images.length ? offer.destination.images[0] : 'assets/placeholder.jpg'"
+    alt="{{ offer.title }}" class="h-36 w-full object-cover" />
+
+  <div class="p-3">
+    <h3 class="text-sm font-semibold line-clamp-1 text-gray-800">
+      {{ offer.title }}
+    </h3>
+    <p class="text-xs text-gray-500 line-clamp-2">
+      {{ offer.description }}
+    </p>
+
+    <div class="flex justify-between items-center mt-3">
+      <span class="text-brand font-bold text-sm">
+        {{ offer.price | currency:'MGA' }}
+      </span>
+      <ion-button size="small" color="primary" (click)="goToDetail(offer.id)">
+        Voir +
+      </ion-button>
+    </div>
+  </div>
+</div>

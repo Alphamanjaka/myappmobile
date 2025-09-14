@@ -8,3 +8,4 @@ import { environment } from 'src/environments/environment';
 })
 export class CategoryService {
   private apiUrl = environment.apiUrl;
+}

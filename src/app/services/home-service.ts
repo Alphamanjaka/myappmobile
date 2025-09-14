@@ -1,5 +1,5 @@
 // src/app/services/home.service.ts
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Destination, Offer } from '../interfaces/travel.models';
@@ -9,9 +9,9 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class HomeService {
-  private apiUrl = environment.apiUrl; // 👉 adapte avec ton URL Django
+  private http = inject(HttpClient);
 
-  constructor(private http: HttpClient) { }
+  private apiUrl = environment.apiUrl;
 
   getFeaturedDestinations(): Observable<Destination[]> {
     return this.http.get<Destination[]>(`${this.apiUrl}/destinations/?featured=true`);

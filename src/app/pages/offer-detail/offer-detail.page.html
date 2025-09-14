@@ -1,13 +1,36 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>offerDetail</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ offer?.title }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">offerDetail</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content *ngIf="offer">
+  <img [src]="offer.destination.images[0]" class="w-full h-60 object-cover" />
+
+  <div class="p-4">
+    <h1 class="text-xl font-bold">{{ offer.title }}</h1>
+    <p class="text-gray-500">{{ offer.destination.name }}</p>
+    <p class="mt-4">{{ offer.description }}</p>
+
+    <div class="mt-4 flex justify-between items-center">
+      <span class="text-brand text-lg font-bold">
+        {{ offer.price | currency:'MGA' }}
+      </span>
+      <ion-button color="primary" (click)="reserveOffer()">Réserver</ion-button>
+    </div>
+
+    <ion-card class="mt-6">
+      <ion-card-header>
+        <ion-card-title>Détails</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Places disponibles : {{ offer.available_slots }}</p>
+        <p>Du {{ offer.start_date | date }} au {{ offer.end_date | date }}</p>
+        <p>Annulation : {{ offer.cancellation_policy }}</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>

@@ -4,18 +4,27 @@
   </ion-toolbar>
   <app-filter-bar (search)="onSearch($event)" (filter)="openFilters()"></app-filter-bar>
 </ion-header>
-<ion-content>
-  @for(offer of offers; track offer.id){
-  <app-offer-card class="transition-transform transform hover:scale-105" [offer]="offer"></app-offer-card>
-  }@empty {
-  <ion-card color="light">
-    <ion-card-header>
-      <ion-card-title>Aucune offre trouvée</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      Essayez une autre recherche ou filtre.
-    </ion-card-content>
-  </ion-card>
+<ion-content >
+  <ion-grid [fixed]="true">
+    <ion-row>
+      @for (offer of offers; track offer.id) {
+      <ion-col size="12" size-md="4" size-lg="3">
+        <app-offer-card-horizontal class="transition-transform transform hover:scale-105" [offer]="offer"></app-offer-card-horizontal>
+      </ion-col>
+      } @empty {
+      <ion-col>
+        <ion-card color="light">
+          <ion-card-header>
+            <ion-card-title>Aucune offre trouvée</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            Essayez une autre recherche ou filtre.
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      }
 
-  }
+    </ion-row>
+  </ion-grid>
+
 </ion-content>

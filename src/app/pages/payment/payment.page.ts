@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
@@ -13,8 +13,9 @@ import { CartService } from '../../services/cart.service';
   imports: [IonicModule, CommonModule, FormsModule]
 })
 export class PaymentPage implements OnInit {
+  private router = inject(Router);
+  private cartService = inject(CartService);
 
-  constructor(private router: Router, private cartService: CartService) { }
 
   ngOnInit() {
   }
