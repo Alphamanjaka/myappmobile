@@ -1,0 +1,11 @@
+<div style="position: fixed; bottom: 16px; right: 16px; z-index: 1000;">
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="toggleChat()">
+      <ion-icon name="chatbubbles-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-card *ngIf="isOpen" style="width: 300px; max-height: 400px; overflow: auto;">
+    <app-chatbot></app-chatbot>
+  </ion-card>
+</div>

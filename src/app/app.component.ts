@@ -3,6 +3,7 @@ import { IonApp, IonRouterOutlet, IonSpinner, IonContent } from '@ionic/angular/
 import { register } from 'swiper/element/bundle';
 import { SplashScreen } from '@capacitor/splash-screen';
 import { StatusBar, Style } from '@capacitor/status-bar';
+import { ChatBubbleComponent } from "./components/chat-bubble/chat-bubble.component";
 
 register();
 @Component({
@@ -10,7 +11,7 @@ register();
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
   standalone: true,
-  imports: [IonContent, IonSpinner, IonApp, IonRouterOutlet],
+  imports: [IonContent, IonSpinner, IonApp, IonRouterOutlet, ChatBubbleComponent],
 })
 export class AppComponent implements OnInit {
   loading = true;

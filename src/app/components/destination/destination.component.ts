@@ -10,7 +10,7 @@ import { IonicModule } from '@ionic/angular';
   selector: 'app-destination',
   templateUrl: './destination.component.html',
   styleUrls: ['./destination.component.scss'],
-  imports: [FormsModule, RouterLink, IonicModule],
+  imports: [FormsModule, IonicModule],
   standalone: true,
 })
 export class DestinationComponent implements OnInit {
