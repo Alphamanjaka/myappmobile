@@ -15,8 +15,17 @@
 </ion-content>
 
 <ion-footer>
+  <div class="ion-padding-start ion-padding-end">
+    @for (question of suggestedQuestions; track question) {
+    <ion-button expand="block" fill="outline" (click)="sendSuggestedQuestion(question)">
+      {{ question }}
+    </ion-button>
+    }
+  </div>
   <ion-toolbar>
     <ion-input [(ngModel)]="userInput" placeholder="Pose ta question..."></ion-input>
-    <ion-button (click)="sendMessage()">Envoyer</ion-button>
+    <ion-button slot="end" (click)="sendMessage()">
+      <ion-icon slot="icon-only" name="send-outline"></ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-footer>
