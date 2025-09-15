@@ -1,6 +1,6 @@
 import { Component, Input, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Destination } from 'src/app/interfaces/travel.models';
-import { CommonModule } from '@angular/common';
+
 import { IonicModule } from '@ionic/angular';
 
 @Component({
@@ -8,7 +8,7 @@ import { IonicModule } from '@ionic/angular';
   templateUrl: './destination-card.component.html',
   styleUrls: ['./destination-card.component.scss'],
   standalone: true,
-  imports: [CommonModule, IonicModule],
+  imports: [IonicModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class DestinationCardComponent {

@@ -1,6 +1,6 @@
 import { addIcons } from 'ionicons';
 import { Component, EnvironmentInjector, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { FormsModule } from '@angular/forms';
 import { IonLabel, IonTabButton, IonTabs, IonIcon, IonTabBar } from '@ionic/angular/standalone';
 import { homeOutline, searchOutline, cartOutline, personCircleOutline, notificationsOutline } from 'ionicons/icons';
@@ -10,7 +10,7 @@ import { homeOutline, searchOutline, cartOutline, personCircleOutline, notificat
   templateUrl: './tabs.page.html',
   styleUrls: ['./tabs.page.scss'],
   standalone: true,
-  imports: [IonTabBar, IonIcon, IonTabs, IonTabButton, IonLabel, CommonModule, FormsModule]
+  imports: [IonTabBar, IonIcon, IonTabs, IonTabButton, IonLabel, FormsModule]
 })
 export class TabsPage {
   public environmentInjector = inject(EnvironmentInjector);

@@ -7,43 +7,42 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content *ngIf="offer" fullscreen class="offer-detail-content">
-  <div class="image-wrapper">
-    <img [src]="offer.destination.images[0]" alt="Image" class="offer-image" />
-  </div>
-
-  <div class="offer-info">
-    <h1 class="offer-title">{{ offer.title }}</h1>
-    <p class="offer-location">{{ offer.destination.name }}</p>
-    <p class="offer-description">{{ offer.description }}</p>
-
-    <div class="offer-action">
-      <span class="offer-price">{{ offer.price | currency:'MGA' }}</span>
-      <ion-button color="primary" (click)="reserveOffer()">Réserver</ion-button>
+@if (offer) {
+  <ion-content fullscreen class="offer-detail-content">
+    <div class="image-wrapper">
+      <img [src]="offer.destination.images[0]" alt="Image" class="offer-image" />
     </div>
-
-    <ion-card class="offer-details-card">
-      <ion-card-header>
-        <ion-card-title>Détails</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <ion-list lines="none">
-          <ion-item>
-            <ion-label>Places disponibles :</ion-label>
-            <ion-note slot="end">{{ offer.available_slots }}</ion-note>
-          </ion-item>
-          <ion-item>
-            <ion-label>Période :</ion-label>
-            <ion-note slot="end">
-              {{ offer.start_date | date }} → {{ offer.end_date | date }}
-            </ion-note>
-          </ion-item>
-          <ion-item>
-            <ion-label>Annulation :</ion-label>
-            <ion-note slot="end">{{ offer.cancellation_policy }}</ion-note>
-          </ion-item>
-        </ion-list>
-      </ion-card-content>
-    </ion-card>
-  </div>
-</ion-content>
+    <div class="offer-info">
+      <h1 class="offer-title">{{ offer.title }}</h1>
+      <p class="offer-location">{{ offer.destination.name }}</p>
+      <p class="offer-description">{{ offer.description }}</p>
+      <div class="offer-action">
+        <span class="offer-price">{{ offer.price | currency:'MGA' }}</span>
+        <ion-button color="primary" (click)="reserveOffer()">Réserver</ion-button>
+      </div>
+      <ion-card class="offer-details-card">
+        <ion-card-header>
+          <ion-card-title>Détails</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list lines="none">
+            <ion-item>
+              <ion-label>Places disponibles :</ion-label>
+              <ion-note slot="end">{{ offer.available_slots }}</ion-note>
+            </ion-item>
+            <ion-item>
+              <ion-label>Période :</ion-label>
+              <ion-note slot="end">
+                {{ offer.start_date | date }} → {{ offer.end_date | date }}
+              </ion-note>
+            </ion-item>
+            <ion-item>
+              <ion-label>Annulation :</ion-label>
+              <ion-note slot="end">{{ offer.cancellation_policy }}</ion-note>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </ion-content>
+}

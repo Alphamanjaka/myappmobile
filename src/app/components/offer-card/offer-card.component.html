@@ -1,8 +1,10 @@
 <ion-card class="offer-card">
   <swiper-container [pagination]="{ clickable: true }" [autoplay]="{ delay: 3000 }" [loop]="true" class="offer-swiper">
-    <swiper-slide *ngFor="let image of offer.destination.images">
-      <img [src]="image" alt="Image" class="offer-image" />
-    </swiper-slide>
+    @for (image of offer.destination.images; track image) {
+      <swiper-slide>
+        <img [src]="image" alt="Image" class="offer-image" />
+      </swiper-slide>
+    }
   </swiper-container>
 
   <ion-card-header>

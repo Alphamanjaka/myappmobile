@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonMenuButton } from '@ionic/angular/standalone';
 import { OfferComponent } from '../../components/offer/offer.component';
@@ -14,11 +14,10 @@ import { OfferComponent } from '../../components/offer/offer.component';
     IonHeader,
     IonTitle,
     IonToolbar,
-    CommonModule,
     FormsModule,
     OfferComponent,
     IonButtons,
     IonMenuButton
-  ],
+],
 })
 export class OfferPage { }

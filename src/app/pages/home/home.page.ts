@@ -2,7 +2,7 @@ import { IonicModule } from '@ionic/angular';
 // src/app/home/home.page.ts
 import { Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
 import { IonicSlides } from '@ionic/angular'; // pour le comportement natif Ionic (optionnel)
-import { CommonModule } from '@angular/common';
+
 import { Destination, Offer } from 'src/app/interfaces/travel.models';
 import { HomeService } from 'src/app/services/home-service';
 import { addIcons } from 'ionicons';
@@ -15,7 +15,7 @@ import { OfferCardHorizontalComponent } from 'src/app/components/offer-card-hori
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, DestinationCardComponent, OfferCardHorizontalComponent],
+  imports: [IonicModule, DestinationCardComponent, OfferCardHorizontalComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class HomePage implements OnInit {

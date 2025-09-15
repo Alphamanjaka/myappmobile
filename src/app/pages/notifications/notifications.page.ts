@@ -1,6 +1,6 @@
 import { IonicModule } from '@ionic/angular';
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { NotificationItemComponent } from 'src/app/components/notification-item/notification-item.component';
 
 @Component({
@@ -8,7 +8,7 @@ import { NotificationItemComponent } from 'src/app/components/notification-item/
   templateUrl: './notifications.page.html',
   styleUrls: ['./notifications.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, NotificationItemComponent]
+  imports: [IonicModule, NotificationItemComponent]
 })
 export class NotificationsPage {
   notifications = [

@@ -3,7 +3,7 @@ import { IonicModule } from '@ionic/angular';
 import { Component, inject, OnInit } from '@angular/core';
 import { Offer, Destination } from 'src/app/interfaces/travel.models';
 import { FilterBarComponent } from 'src/app/components/filter-bar/filter-bar.component';
-import { CommonModule } from '@angular/common';
+
 import { OfferCardHorizontalComponent } from "src/app/components/offer-card-horizontal/offer-card-horizontal.component";
 import { FiltersModalComponent } from 'src/app/components/filters-modal/filters-modal.component';
 import { ModalController } from '@ionic/angular';
@@ -14,7 +14,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './search.page.html',
   styleUrls: ['./search.page.scss'],
   standalone: true,
-  imports: [IonicModule, FilterBarComponent, CommonModule, OfferCardHorizontalComponent,FormsModule],
+  imports: [IonicModule, FilterBarComponent, OfferCardHorizontalComponent, FormsModule],
 })
 export class SearchPage implements OnInit {
   allOffers: Offer[] = [];

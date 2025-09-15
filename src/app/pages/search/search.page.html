@@ -6,29 +6,30 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ng-container *ngIf="loading; else results">
+  @if (loading) {
     <ion-spinner name="crescent" class="search-spinner"></ion-spinner>
-  </ng-container>
-
-  <ng-template #results>
-
+  } @else {
     <ion-grid fixed>
       <ion-row>
-        <ion-col size="12" size-md="6" size-lg="4" *ngFor="let offer of offers; trackBy: trackOffer">
-          <app-offer-card-horizontal [offer]="offer"></app-offer-card-horizontal>
-        </ion-col>
-
-        <ion-col *ngIf="offers.length === 0">
-          <ion-card color="light">
-            <ion-card-header>
-              <ion-card-title>Aucune offre trouvée</ion-card-title>
-            </ion-card-header>
-            <ion-card-content>
-              Essayez une autre recherche ou filtre.
-            </ion-card-content>
-          </ion-card>
-        </ion-col>
+        @for (offer of offers; track trackOffer($index, offer)) {
+          <ion-col size="12" size-md="6" size-lg="4">
+            <app-offer-card-horizontal [offer]="offer"></app-offer-card-horizontal>
+          </ion-col>
+        }
+        @if (offers.length === 0) {
+          <ion-col>
+            <ion-card color="light">
+              <ion-card-header>
+                <ion-card-title>Aucune offre trouvée</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                Essayez une autre recherche ou filtre.
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        }
       </ion-row>
     </ion-grid>
-  </ng-template>
+  }
+
 </ion-content>

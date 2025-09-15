@@ -5,9 +5,11 @@
       '768': { 'slidesPerView': 3.5 },
       '1024': { 'slidesPerView': 4.5 }
     }" class="destination-swiper">
-    <swiper-slide *ngFor="let image of destination.images">
-      <img [src]="image" alt="Image" class="destination-image" />
-    </swiper-slide>
+    @for (image of destination.images; track image) {
+      <swiper-slide>
+        <img [src]="image" alt="Image" class="destination-image" />
+      </swiper-slide>
+    }
   </swiper-container>
 
   <ion-card-content>

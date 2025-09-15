@@ -9,15 +9,17 @@
   <!-- 1. Hero Swiper -->
   <div class="swiper-wrapper">
     <swiper-container [pagination]="{ clickable: true }" [autoplay]="{ delay: 4000 }" [loop]="true" class="mySwiper">
-      <swiper-slide *ngFor="let dest of featuredDestinations">
-        <div class="slide-inner">
-          <img [src]="dest.images[0]" class="slide-img" />
-          <div class="slide-overlay">
-            <h2 class="slide-title">{{ dest.name }}</h2>
-            <p class="slide-description">{{ dest.description }}</p>
+      @for (dest of featuredDestinations; track dest) {
+        <swiper-slide>
+          <div class="slide-inner">
+            <img [src]="dest.images[0]" class="slide-img" />
+            <div class="slide-overlay">
+              <h2 class="slide-title">{{ dest.name }}</h2>
+              <p class="slide-description">{{ dest.description }}</p>
+            </div>
           </div>
-        </div>
-      </swiper-slide>
+        </swiper-slide>
+      }
     </swiper-container>
   </div>
 
@@ -56,8 +58,10 @@
       <ion-card-title>Offres spéciales</ion-card-title>
     </ion-card-header>
     <div class="offer-scroll-wrapper">
-      <app-offer-card-horizontal *ngFor="let offer of specialOffers" [offer]="offer">
-      </app-offer-card-horizontal>
+      @for (offer of specialOffers; track offer) {
+        <app-offer-card-horizontal [offer]="offer">
+        </app-offer-card-horizontal>
+      }
     </div>
   </ion-card>
 
@@ -68,9 +72,11 @@
     </ion-card-header>
     <ion-grid>
       <ion-row>
-        <ion-col size="6" *ngFor="let dest of popularDestinations">
-          <app-destination-card [destination]="dest"></app-destination-card>
-        </ion-col>
+        @for (dest of popularDestinations; track dest) {
+          <ion-col size="6">
+            <app-destination-card [destination]="dest"></app-destination-card>
+          </ion-col>
+        }
       </ion-row>
     </ion-grid>
   </ion-card>

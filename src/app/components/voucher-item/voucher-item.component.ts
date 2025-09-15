@@ -2,7 +2,7 @@ import { IonicModule } from '@ionic/angular';
 // src/app/components/voucher-item/voucher-item.component.ts
 import { Component, Input } from '@angular/core';
 import { Reservation } from 'src/app/interfaces/travel.models';
-import { CommonModule } from '@angular/common';
+
 import { addIcons } from 'ionicons';
 import { create, download } from 'ionicons/icons';
 
@@ -12,7 +12,7 @@ import { create, download } from 'ionicons/icons';
   templateUrl: './voucher-item.component.html',
   styleUrls: ['./voucher-item.component.scss'],
   standalone: true,
-  imports: [IonicModule,CommonModule],
+  imports: [IonicModule],
 })
 export class VoucherItemComponent {
   @Input() reservation!: Reservation;
