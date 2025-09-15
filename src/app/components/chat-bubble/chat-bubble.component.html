@@ -5,7 +5,9 @@
     </ion-fab-button>
   </ion-fab>
 
-  <ion-card *ngIf="isOpen" style="width: 300px; max-height: 400px; overflow: auto;">
-    <app-chatbot></app-chatbot>
-  </ion-card>
+  @if (isOpen) {
+    <ion-card style="width: 300px; max-height: 400px; overflow: auto;">
+      <app-chatbot></app-chatbot>
+    </ion-card>
+  }
 </div>
