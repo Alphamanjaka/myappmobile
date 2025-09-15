@@ -21,22 +21,22 @@
     <ion-label position="stacked">Destinations</ion-label>
     <div>
       @for (dest of selectedDestinations; track dest) {
-        <ion-chip>
-          {{ dest }}
-          <ion-icon name="close-circle" (click)="removeDestination(dest)"></ion-icon>
-        </ion-chip>
+      <ion-chip>
+        {{ dest }}
+        <ion-icon name="close-outline" (click)="removeDestination(dest)"></ion-icon>
+      </ion-chip>
       }
     </div>
     <ion-input [(ngModel)]="destinationInput" (ionInput)="filterDestinations()"
-    placeholder="Ajouter une destination"></ion-input>
+      placeholder="Ajouter une destination"></ion-input>
     @if (filteredDestinations.length) {
-      <ion-list>
-        @for (suggestion of filteredDestinations; track suggestion) {
-          <ion-item button (click)="selectDestination(suggestion)">
-            {{ suggestion }}
-          </ion-item>
-        }
-      </ion-list>
+    <ion-list>
+      @for (suggestion of filteredDestinations; track suggestion) {
+      <ion-item button (click)="selectDestination(suggestion)">
+        {{ suggestion }}
+      </ion-item>
+      }
+    </ion-list>
     }
   </ion-item>
 
@@ -44,22 +44,22 @@
     <ion-label position="stacked">Catégories</ion-label>
     <div>
       @for (cat of selectedCategories; track cat) {
-        <ion-chip>
-          {{ cat }}
-          <ion-icon name="close-circle" (click)="removeCategory(cat)"></ion-icon>
-        </ion-chip>
+      <ion-chip>
+        {{ cat }}
+        <ion-icon name="close-circle" (click)="removeCategory(cat)"></ion-icon>
+      </ion-chip>
       }
     </div>
     <ion-input [(ngModel)]="categoryInput" (ionInput)="filterCategories()"
-    placeholder="Ajouter une catégorie"></ion-input>
+      placeholder="Ajouter une catégorie"></ion-input>
     @if (filteredCategories.length) {
-      <ion-list>
-        @for (suggestion of filteredCategories; track suggestion) {
-          <ion-item button (click)="selectCategory(suggestion)">
-            {{ suggestion }}
-          </ion-item>
-        }
-      </ion-list>
+    <ion-list>
+      @for (suggestion of filteredCategories; track suggestion) {
+      <ion-item button (click)="selectCategory(suggestion)">
+        {{ suggestion }}
+      </ion-item>
+      }
+    </ion-list>
     }
   </ion-item>
 

@@ -1,3 +1,4 @@
+import { IonIcon } from '@ionic/angular/standalone';
 import { OnInit } from '@angular/core';
 // filters-modal.component.ts
 
@@ -5,13 +6,13 @@ import { Component, Output, EventEmitter } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { addIcons } from 'ionicons';
-import { closeCircle } from 'ionicons/icons';
+import { closeOutline } from 'ionicons/icons';
 @Component({
   selector: 'app-filters-modal',
   templateUrl: './filters-modal.component.html',
   styleUrls: ['./filters-modal.component.scss'],
   standalone: true,
-  imports: [IonicModule, FormsModule],
+  imports: [FormsModule, IonIcon, IonicModule],
 })
 export class FiltersModalComponent {
   @Output() applyFilters = new EventEmitter<any>();
@@ -73,7 +74,7 @@ export class FiltersModalComponent {
   OnInit() {
     addIcons(
       {
-        closeCircle,
+        closeOutline,
       }
     );
   }

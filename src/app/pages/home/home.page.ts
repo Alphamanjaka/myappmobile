@@ -6,7 +6,7 @@ import { IonicSlides } from '@ionic/angular'; // pour le comportement natif Ioni
 import { Destination, Offer } from 'src/app/interfaces/travel.models';
 import { HomeService } from 'src/app/services/home-service';
 import { addIcons } from 'ionicons';
-import { libraryOutline, sunnyOutline, trailSignOutline } from 'ionicons/icons';
+import { libraryOutline, sparklesOutline, sunnyOutline, trailSignOutline } from 'ionicons/icons';
 import { DestinationCardComponent } from 'src/app/components/destination-card/destination-card.component';
 import { OfferCardHorizontalComponent } from 'src/app/components/offer-card-horizontal/offer-card-horizontal.component';
 
@@ -19,6 +19,9 @@ import { OfferCardHorizontalComponent } from 'src/app/components/offer-card-hori
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class HomePage implements OnInit {
+openChatbot() {
+throw new Error('Method not implemented.');
+}
   private homeService = inject(HomeService);
 
   @ViewChild('swiper', { static: false }) swiperRef?: ElementRef;
@@ -88,7 +91,8 @@ export class HomePage implements OnInit {
     addIcons({
       trailSignOutline,
       sunnyOutline,
-      libraryOutline
+      libraryOutline,
+      sparklesOutline
     })
   }
   onSlideChange(e: any) {
