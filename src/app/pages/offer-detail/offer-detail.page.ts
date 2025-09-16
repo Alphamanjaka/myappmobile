@@ -15,9 +15,7 @@ export class OfferDetailPage implements OnInit {
   offer: Offer | null = null;
 
   constructor(
-    private route: ActivatedRoute,
-    private homeService: HomeService
-  ) { }
+    private route: ActivatedRoute  ) { }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
@@ -26,7 +24,7 @@ export class OfferDetailPage implements OnInit {
       id: Number(id),
       title: 'Séjour de rêve à Nosy Be',
       description: 'Profitez de 5 jours inoubliables à Nosy Be, avec hôtel, activités nautiques et excursions incluses.',
-      price: 450000,
+      price: 45000000,
       start_date: '2025-09-20',
       end_date: '2025-09-25',
       available_slots: 12,

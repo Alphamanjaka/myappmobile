@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, ModalController } from '@ionic/angular';
 import { addIcons } from 'ionicons';
-import { sendOutline } from 'ionicons/icons';
+import { sendOutline, closeOutline } from 'ionicons/icons';
 import { ChatService } from 'src/app/services/chat';
 @Component({
   selector: 'app-chatbot',
@@ -11,6 +11,7 @@ import { ChatService } from 'src/app/services/chat';
   imports: [IonicModule, FormsModule],
 })
 export class ChatbotComponent implements OnInit {
+
   messages: string[] = [];
   userInput = '';
   suggestedQuestions = [
@@ -20,10 +21,11 @@ export class ChatbotComponent implements OnInit {
     'Quelles sont les formalités pour voyager au Japon ?'
   ];
 
-  constructor(private chatService: ChatService) { }
+  constructor(private chatService: ChatService, private modalCtrl: ModalController) { }
   ngOnInit(): void {
     addIcons({
-      sendOutline
+      sendOutline,
+      closeOutline
     })
   }
 
@@ -38,5 +40,9 @@ export class ChatbotComponent implements OnInit {
   sendSuggestedQuestion(question: string) {
     this.userInput = question;
     this.sendMessage();
+  }
+
+  close() {
+    this.modalCtrl.dismiss();
   }
 }

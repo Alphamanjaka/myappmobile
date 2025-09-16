@@ -1,6 +1,6 @@
 <ion-header translucent>
   <ion-toolbar>
-    <ion-title>Accueil</ion-title>
+    <ion-title>Home</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="openChatbot()">
         <ion-icon slot="icon-only" name="sparkles-outline"></ion-icon>
@@ -28,23 +28,23 @@
     </swiper-container>
   </div>
 
-  <!-- 2. Catégories rapides -->
+  <!-- 2. categories rapids -->
   <ion-card>
     <ion-card-header>
-      <ion-card-title>Explorer par catégorie</ion-card-title>
+      <ion-card-title>Explore by  Category</ion-card-title>
     </ion-card-header>
     <ion-grid>
       <ion-row>
         <ion-col size="4" class="category-col">
           <ion-card class="category-card">
             <ion-icon name="sunny-outline" class="category-icon" color="warning"></ion-icon>
-            <ion-label>Plages</ion-label>
+            <ion-label>Beach</ion-label>
           </ion-card>
         </ion-col>
         <ion-col size="4" class="category-col">
           <ion-card class="category-card">
             <ion-icon name="trail-sign-outline" class="category-icon" color="success"></ion-icon>
-            <ion-label>Aventure</ion-label>
+            <ion-label>Adventure</ion-label>
           </ion-card>
         </ion-col>
         <ion-col size="4" class="category-col">
@@ -57,10 +57,10 @@
     </ion-grid>
   </ion-card>
 
-  <!-- 3. Offres spéciales -->
+  <!-- 3. Special Offer -->
   <ion-card>
     <ion-card-header>
-      <ion-card-title>Offres spéciales</ion-card-title>
+      <ion-card-title>Special Offer</ion-card-title>
     </ion-card-header>
     <div class="offer-scroll-wrapper">
       @for (offer of specialOffers; track offer) {
@@ -70,10 +70,10 @@
     </div>
   </ion-card>
 
-  <!-- 4. Destinations populaires -->
+  <!-- 4. Most Popular Destinations -->
   <ion-card>
     <ion-card-header>
-      <ion-card-title>Destinations populaires</ion-card-title>
+      <ion-card-title>Most Popular Destinations</ion-card-title>
     </ion-card-header>
     <ion-grid>
       <ion-row>

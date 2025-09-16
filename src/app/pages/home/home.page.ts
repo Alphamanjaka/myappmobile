@@ -1,7 +1,7 @@
 
 // src/app/home/home.page.ts
 import { Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
-import { IonicSlides } from '@ionic/angular'; // pour le comportement natif Ionic (optionnel)
+import { IonicSlides } from '@ionic/angular';
 
 import { Destination, Offer } from 'src/app/interfaces/travel.models';
 import { HomeService } from 'src/app/services/home-service';
@@ -25,7 +25,6 @@ export class HomePage implements OnInit {
 
   @ViewChild('swiper', { static: false }) swiperRef?: ElementRef;
 
-  // Ajoute IonicSlides si tu veux conserver le réglage natif (conseillé pour ressentir comme ion-slides)
   swiperModules = [IonicSlides];
   loading = false;
 
@@ -37,7 +36,7 @@ export class HomePage implements OnInit {
 
 
   ngOnInit() {
-    this.loadDataTest ();
+    this.loadDataTest();
     addIcons({
       trailSignOutline,
       sunnyOutline,
@@ -46,12 +45,10 @@ export class HomePage implements OnInit {
     })
   }
   onSlideChange(e: any) {
-    // e.target est le DOM element swiper-container
     const active = this.swiperRef?.nativeElement.swiper?.activeIndex;
     console.log('slide changed, activeIndex=', active);
   }
 
-  // Exemple: accéder à l'instance Swiper
   goToNext() {
     this.swiperRef?.nativeElement.swiper?.slideNext();
   }

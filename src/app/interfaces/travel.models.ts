@@ -49,7 +49,8 @@ export interface Reservation {
   reserved_on: string;
   number_of_people: number;
   status: 'pending' | 'confirmed' | 'cancelled';
-}export interface Cart {
+}
+export interface Cart {
   id: number;
   user: User;
   created_at: string;
